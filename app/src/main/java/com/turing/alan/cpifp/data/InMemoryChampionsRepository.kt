@@ -50,6 +50,10 @@ class InMemoryChampionsRepository private constructor(): ChampionsRepository {
         )
     }
 
+    override fun getChampion(id: Int): Champion {
+        return this.getChampions().single() { it.id == id }
+    }
+
     companion object {
         // Instancia única del repositorio
         @Volatile

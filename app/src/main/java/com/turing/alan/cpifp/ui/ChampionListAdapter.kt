@@ -9,13 +9,16 @@ import coil.load
 import com.turing.alan.cpifp.data.Champion
 import com.turing.alan.cpifp.databinding.ChampionListItemBinding
 
-class ChampionListAdapter(): ListAdapter<Champion, ChampionListAdapter.ChampionViewHolder>(ChampionDiffCallback) {
-    class ChampionViewHolder(private val binding: ChampionListItemBinding) : RecyclerView.ViewHolder(binding.root) {
+class ChampionListAdapter(private val toChampionDetail:((Champion)->Unit)): ListAdapter<Champion, ChampionListAdapter.ChampionViewHolder>(ChampionDiffCallback) {
+    inner class ChampionViewHolder(private val binding: ChampionListItemBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(champion: Champion) {
             binding.championImage.load(champion.imageUrl)
             binding.championName.text = champion.name
             binding.championTitle.text = champion.title
-            binding.championLore.text = champion.lore
+            // binding.championLore.text = champion.lore
+            binding.root.setOnClickListener  {
+                toChampionDetail(champion)
+            }
         }
     }
 
@@ -38,7 +41,6 @@ class ChampionListAdapter(): ListAdapter<Champion, ChampionListAdapter.ChampionV
         override fun areContentsTheSame(oldItem: Champion, newItem: Champion) =
                 oldItem.imageUrl == newItem.imageUrl &&
                 oldItem.name == newItem.name &&
-                oldItem.title == newItem.title &&
-                oldItem.lore == newItem.lore
+                oldItem.title == newItem.title
     }
 }

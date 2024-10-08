@@ -42,6 +42,15 @@
                 android:textAppearance="?attr/textAppearanceBodyMedium"
                 android:textColor="?android:attr/textColorSecondary"
                 />
+            <TextView
+                android:id="@+id/champion_lore"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                tools:text="Lore"
+                android:textAppearance="?attr/textAppearanceBodyMedium"
+                android:textColor="?android:attr/textColorSecondary"
+                />
         </LinearLayout>
     </LinearLayout>
 </com.google.android.material.card.MaterialCardView>

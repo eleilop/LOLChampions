@@ -4,4 +4,6 @@ interface ChampionsRepository {
 
     fun getChampions(): List<Champion>
 
+    fun getChampion(id: Int): Champion
+
 }
